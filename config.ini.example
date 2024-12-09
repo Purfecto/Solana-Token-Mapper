@@ -1,0 +1,11 @@
+[API]
+# Your QuickNode RPC URL - Get one at https://quicknode.com
+quicknode_url = YOUR_QUICKNODE_URL_HERE
+# Rate limiting (requests per second)
+rate_limit_per_second = 5
+
+[ANALYSIS]
+# Number of top holders to analyze (set to 0 for all holders)
+top_holders_limit = 10
+# Number of transactions to analyze per holder
+transactions_per_holder = 100

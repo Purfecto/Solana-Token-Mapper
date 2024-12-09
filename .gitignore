@@ -1,0 +1,10 @@
+echo "# Configuration
+config.ini
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.venv
+env/
+venv/
+.DS_Store" > .gitignore
