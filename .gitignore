@@ -1,0 +1,23 @@
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Analysis output
+mapper/
+output/
+reports/
+
+# API keys and secrets
+*.key
+*.pem
+*.cert
+
+# Debug logs
+debug/
+*.debug
+
+# Custom configuration
+config/local_*
+config/dev_*
+config/prod_*
