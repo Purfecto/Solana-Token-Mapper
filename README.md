@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Solana Token Mapper
 
 Detailed token holder analysis tool for Solana blockchain.
