@@ -1,3 +1,29 @@
+<<<<<<< HEAD
+# Solana Token Mapper
+
+Detailed token holder analysis tool for Solana blockchain.
+
+## Installation
+
+\`\`\`bash
+pip install -r requirements.txt
+\`\`\`
+
+## Configuration
+
+Before running the analyzer, you need to:
+
+1. Add your QuickNode URL to \`config/config.ini\`:
+   ```ini
+   [API]
+   quicknode_url = # Add your QuickNode URL here
+
+## Usage
+
+\`\`\`bash
+python src/token_analysis/token_analyzer.py --token <token_mint_address> --holders <number_of_holders>
+\`\`\`
+=======
  Solana Token Flow Analyzer
 
 A Python tool for analyzing token holder distributions and tracking how top holders acquired their tokens on Solana.
@@ -80,3 +106,4 @@ Current holder distribution
 Acquisition timelines
 Transfer history
 Summary statistics
+>>>>>>> 8dc900ed708109dbfc8382e3e5f1abd95b4bff35

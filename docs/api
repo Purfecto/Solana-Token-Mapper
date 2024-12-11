@@ -1,0 +1,18 @@
+# API Documentation
+
+## QuickNode API Configuration
+
+The analyzer uses QuickNode's API to fetch Solana blockchain data. Required endpoints:
+- getAccountInfo
+- getProgramAccounts
+- getSignaturesForAddress
+- getTransaction
+- getTokenAccountsByOwner
+
+## Rate Limiting
+
+Default rate limit is set to 5 requests per second to avoid API throttling.
+Configure in config.ini:
+\`\`\`ini
+rate_limit_per_second = 5
+\`\`\`

@@ -1,3 +1,28 @@
+<<<<<<< HEAD
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Analysis output
+mapper/
+output/
+reports/
+
+# API keys and secrets
+*.key
+*.pem
+*.cert
+
+# Debug logs
+debug/
+*.debug
+
+# Custom configuration
+config/local_*
+config/dev_*
+config/prod_*
+=======
 echo "# Configuration
 config.ini
 __pycache__/
@@ -8,3 +33,4 @@ __pycache__/
 env/
 venv/
 .DS_Store" > .gitignore
+>>>>>>> 8dc900ed708109dbfc8382e3e5f1abd95b4bff35
