@@ -4,7 +4,6 @@ import json
 from datetime import datetime
 from scan import scan_token
 from tag import tag_wallets
-from compare import compare_scans
 from utils import (
     save_json, load_json, create_output_dir,
     generate_summary, print_summary
@@ -46,7 +45,11 @@ def main():
     if command == "scan":
         mint = args.mint
         print(f"[+] Scanning token: {mint}")
-        scan_data = scan_token(mint)
+        try:
+            scan_data = scan_token(mint)
+        except Exception as e:
+            print(f"[!] Error scanning token: {e}")
+            return
 
         timestamp = datetime.now().strftime("%Y%m%d_%H%M")
         output_dir = f"distributions/{mint}/{timestamp}"
@@ -57,7 +60,7 @@ def main():
 
         if args.tag:
             print("[+] Applying wallet tags...")
-            scan_data["holders"] = tag_wallets(scan_data["holders"])
+            scan_data["holders"] = tag_wallets(scan_data["holders"], scan_data["supply"])
 
         if args.cluster:
             print("[+] Running wallet clustering...")
@@ -77,7 +80,8 @@ def main():
         output_file = args.output
         print(f"[+] Tagging wallets in {input_file}")
         holders = load_json(input_file)
-        tagged = tag_wallets(holders)
+        supply = sum(h["balance"] for h in holders)
+        tagged = tag_wallets(holders, supply)
         save_json(tagged, output_file)
         print(f"[+] Tagged holders saved to {output_file}")
 
@@ -95,6 +99,7 @@ def main():
         new_file = args.new
         output_file = args.output
         print(f"[+] Comparing {old_file} vs {new_file}")
+        from compare import compare_scans
         diff = compare_scans(old_file, new_file)
         save_json(diff, output_file)
         print(f"[+] Diff report saved to {output_file}")
@@ -109,7 +114,7 @@ def main():
             for member in cluster["members"]:
                 if member["wallet"] == wallet:
                     percent = (member["balance"] / total_supply) * 100
-                    print("\n🔍 WALLET LOOKUP")
+                    print("\n\U0001F50D WALLET LOOKUP")
                     print("=" * 40)
                     print(f"Wallet: {wallet}")
                     print(f"Cluster: {cluster_id} ({cluster['label']})")
